@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+    <title>Bate Papo UOL</title>
+</head>
+<body>
+    
+    <!-- Inicio app -->
+    <div class="app">
+        <!-- Inicio cabeçalho -->
+        <div class="cabecalho">
+            <div class="icone-uol">
+                <img src="./img/logo 1.svg" alt="bate papo uol">
+            </div>
+            <div class="icone-person">
+                <ion-icon name="people"></ion-icon>
+            </div>
+        </div>
+        <!-- Fim cabeçalho -->
+
+        <!-- Início Espaço do Chat -->
+        <ul class="espaco-chat"></ul>
+        <!-- Fim Espaço do Chat -->
+
+        <!-- Inicio Barra de Mensagem -->
+        <div class="barra-mensagem">
+            <input type="text" placeholder="Escreva aqui...">
+            <div class="paper-plane">
+                <ion-icon name="paper-plane-outline"></ion-icon>
+            </div>
+        </div>
+        <!-- Fim Barra de Mensagem -->
+    </div>
+    <!-- Fim app -->
+    
+    <!--inicio codigo para icones-->
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <!--fim codigo para icones-->
+
+    <!-- referencia axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <!-- fim referncia axios -->
+    
+    <script src="script.js"></script>
+</body>
+</html>
