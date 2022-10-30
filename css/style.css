@@ -65,17 +65,29 @@ input{
 }
 
 .espaco-chat{
-    margin: 106px 0;
+    margin-top: 106px;
+    margin-bottom: 106px;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    gap:4px; 
 }
 
 .notificacao{
-    padding: 26px 8px;  
+    padding: 26px 8px; 
 }
 
-.entrada{
+.status{
     background-color: #DCDCDC; 
+}
+
+.message{
+ background-color: white;
 }
 
 .negrito{
     font-weight: 700;
+}
+
+.cinza{
+    color: #AAAAAA;
 }
