@@ -40,10 +40,6 @@ function naoCadastrado(erro) {
  //insere html com a notificação de entrada do usuario
  function cadastrado(){
     console.log('tudo certo')
-    // const usuarioEntrou = document.querySelector('.espaco-chat')
-    // usuarioEntrou.innerHTML = `<li class="notificacao status">
-    // <span class="cinza">(${hora}:${minuto}:${segundo})</span> <span class="negrito"> ${novoUsuario}</span> entra na sala... 
-    // </li>`
  }
 
  cadastrarUsuario()
@@ -79,22 +75,59 @@ function renderizarMensagens(notific){
     }
 
     adicionarNaTela()
+
 }
 
 function adicionarNaTela(){
     const msg = document.querySelector('.espaco-chat');
-
+    
     for(let i=0; mensagens.length>i; i++){
-        msg.innerHTML += `
-        <li class="${mensagens[i].type} notificacao">
-            <span class="cinza"> (${mensagens[i].time}) </span> <span class="negrito">${mensagens[i].from}</span> para <span class="negrito">${mensagens[i].to}</span> : ${mensagens[i].text}
-        </li>
-    `
+        if(mensagens[i].to === novoUsuario || mensagens[i].to === 'Todos'){
+            msg.innerHTML += `
+            <li class="${mensagens[i].type} notificacao">
+                <span class="cinza"> (${mensagens[i].time}) </span> <span class="negrito">${mensagens[i].from}</span> para <span class="negrito">${mensagens[i].to}</span> : ${mensagens[i].text}
+            </li>
+        `
+        }
     }
+    
+    let elementoAparecer = document.querySelectorAll(".notificacao")
+    elementoAparecer[elementoAparecer.length-1].scrollIntoView()
 }
 
 setInterval(buscarMensagem, 3000);
 
 function nChegou(resposta){
     console.log(resposta)
+    buscarMensagem()
 }
+
+let novaMsg= document.querySelector('.espaco-msg').value;
+
+function enviarMensagem() {   
+    const novaMensagem = {
+        from: novoUsuario,
+        to: "Todos",
+        text: novaMsg,
+        type: "message"
+    }
+    const promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", novaMensagem);
+    promise.then(msgChegou)
+    promise.catch(msgNaoChegou)
+
+    limparBarra()
+    
+}
+function limparBarra(){
+    novaMsg = " "
+}
+function msgChegou(){
+    buscarMensagem()
+}
+
+function msgNaoChegou(){
+    alert('Você está deslogado')
+    window.location.reload()
+}
+
+
