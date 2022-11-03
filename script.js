@@ -84,7 +84,7 @@ function adicionarNaTela(){
     for(let i=0; mensagens.length>i; i++){
         if(mensagens[i].to === novoUsuario || mensagens[i].to === 'Todos'){
             msg.innerHTML += `
-            <li class="${mensagens[i].type} notificacao">
+            <li class="${mensagens[i].type} notificacao" data-test="message">
                 <span class="cinza"> (${mensagens[i].time}) </span> <span class="negrito">${mensagens[i].from}</span> para <span class="negrito">${mensagens[i].to}</span> : ${mensagens[i].text}
             </li>
         `
